@@ -1,7 +1,7 @@
-import PageObjects.LoginPage;
-import PageObjects.MainPage;
-import PageObjects.ProfilePage;
-import PageObjects.RegistrationPage;
+import pageobjects.LoginPage;
+import pageobjects.MainPage;
+import pageobjects.ProfilePage;
+import pageobjects.RegistrationPage;
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import java.util.Objects;
 
-import static PageObjects.LoginPage.loginURL;
-import static PageObjects.MainPage.mainURL;
+import static pageobjects.LoginPage.loginURL;
+import static pageobjects.MainPage.mainURL;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationTest {
@@ -22,8 +22,8 @@ public class RegistrationTest {
     public void tearDown() {
 
         LoginPage logPage = open(loginURL, LoginPage.class);
-        String email = user.email;
-        String password = user.password;
+        String email = user.getEmail();
+        String password = user.getPassword();
         logPage.getInputFieldEmail().setValue(email);
         logPage.getInputFieldPassword().setValue(password);
         logPage.clickLogin();
@@ -54,9 +54,9 @@ public class RegistrationTest {
         RegistrationPage registrationPage = page(RegistrationPage.class);
         registrationPage.waitForLoadRegisterPage();
         user = User.getRandom();
-        String name = user.name;
-        String email = user.email;
-        String password = user.password;
+        String name = user.getName();
+        String email = user.getEmail();
+        String password = user.getPassword();
         registrationPage.getInputFieldName().setValue(name);
         registrationPage.getInputFieldEmail().setValue(email);
         registrationPage.getInputFieldPassword().setValue(password);
@@ -76,8 +76,8 @@ public class RegistrationTest {
         RegistrationPage registrationPage = page(RegistrationPage.class);
         registrationPage.waitForLoadRegisterPage();
         user = User.getRandom();
-        String name = user.name;
-        String email = user.email;
+        String name = user.getName();
+        String email = user.getEmail();
         String password = RandomStringUtils.randomAlphabetic(4);
         registrationPage.getInputFieldName().setValue(name);
         registrationPage.getInputFieldEmail().setValue(email);

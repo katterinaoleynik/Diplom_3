@@ -1,14 +1,14 @@
-import PageObjects.LoginPage;
-import PageObjects.MainPage;
-import PageObjects.ProfilePage;
+import pageobjects.LoginPage;
+import pageobjects.MainPage;
+import pageobjects.ProfilePage;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Test;
 
 import java.util.Objects;
 
-import static PageObjects.MainPage.mainURL;
-import static PageObjects.ProfilePage.profilePageURL;
+import static pageobjects.MainPage.mainURL;
+import static pageobjects.ProfilePage.profilePageURL;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GoingToMainPageTest {

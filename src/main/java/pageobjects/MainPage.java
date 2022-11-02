@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -25,27 +25,33 @@ public class MainPage {
     private SelenideElement assembleABurger;
 
     //Булки в конструкторе активны
-    @FindBy(how = How.XPATH, using = ".//span[text()='Булки']")
+    @FindBy(how = How.XPATH, using = "//div[@class=\\\"tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect\\\"]" +
+            "/span[text()=\\\"Булки\\\"]")
     private SelenideElement bunIsActive;
 
     //Булки в конструкторе неактивны
-    @FindBy(how = How.XPATH, using = ".//h2[text()='Булки']")
+    @FindBy(how = How.XPATH, using = "//span[@class=\\\"text text_type_main-default\\\" " +
+            "and text()=\\\"Булки\\\"]")
     private SelenideElement bunIsInActive;
 
     //Соусы в конструкторе активны
-    @FindBy(how = How.XPATH, using = ".//span[text()='Соусы']")
+    @FindBy(how = How.XPATH, using = "//div[@class=\\\"tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect\\\"]" +
+            "/span[text()=\\\"Соусы\\\"]")
     private SelenideElement saucesIsActive;
 
     //Соусы в конструкторе неактивны
-    @FindBy(how = How.XPATH, using = ".//h2[text()='Соусы']")
+    @FindBy(how = How.XPATH, using = "//span[@class=\\\"text text_type_main-default\\\" " +
+            "and text()=\\\"Соусы\\\"]")
     private SelenideElement saucesIsInActive;
 
     //Начинки в конструкторе активны
-    @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']")
+    @FindBy(how = How.XPATH, using = "//div[@class=\\\"tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect\\\"]" +
+            "/span[text()=\\\"Начинки\\\"]")
     private SelenideElement fillingsIsActive;
 
     //Начинки в конструкторе неактивны
-    @FindBy(how = How.XPATH, using = ".//h2[text()='Начинки']")
+    @FindBy(how = How.XPATH, using = "//span[@class=\\\"text text_type_main-default\\\" " +
+            "and text()=\\\"Начинки\\\"]")
     private SelenideElement fillingsIsInActive;
 
     //Клик по кнопке Личный кабинет

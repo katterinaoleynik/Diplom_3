@@ -1,7 +1,7 @@
-import PageObjects.LoginPage;
-import PageObjects.MainPage;
-import PageObjects.ProfilePage;
-import PageObjects.RegistrationPage;
+import pageobjects.LoginPage;
+import pageobjects.MainPage;
+import pageobjects.ProfilePage;
+import pageobjects.RegistrationPage;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -9,9 +9,9 @@ import org.junit.Test;
 
 import java.util.Objects;
 
-import static PageObjects.MainPage.mainURL;
-import static PageObjects.ProfilePage.profilePageURL;
-import static PageObjects.RegistrationPage.registrationURL;
+import static pageobjects.MainPage.mainURL;
+import static pageobjects.ProfilePage.profilePageURL;
+import static pageobjects.RegistrationPage.registrationURL;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GoingToProfilePageTest {
@@ -24,9 +24,9 @@ public class GoingToProfilePageTest {
     @Before
     public void setUp() {
         user = User.getRandom();
-        String name = user.name;
-        email = user.email;
-        password = user.password;
+        String name = user.getName();
+        email = user.getEmail();
+        password = user.getPassword();
         RegistrationPage registrationPage = open(registrationURL, RegistrationPage.class);
         registrationPage.getInputFieldName().setValue(name);
         registrationPage.getInputFieldEmail().setValue(email);

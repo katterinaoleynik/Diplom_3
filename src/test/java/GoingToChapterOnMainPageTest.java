@@ -1,8 +1,8 @@
-import PageObjects.MainPage;
+import pageobjects.MainPage;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 
-import static PageObjects.MainPage.mainURL;
+import static pageobjects.MainPage.mainURL;
 import static com.codeborne.selenide.Selenide.open;
 
 public class GoingToChapterOnMainPageTest {
