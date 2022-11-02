@@ -1,4 +1,4 @@
-package POM;
+package PageObjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -10,40 +10,42 @@ import static java.time.Duration.ofSeconds;
 
 public class MainPage {
 
+    public static final String mainURL = "https://stellarburgers.nomoreparties.site";
+
     //Кнопка "Личный кабинет"
-    @FindBy(how = How.XPATH, using = ".//a[@href='/account']")
+    @FindBy(how = How.XPATH, using = ".//p[text()='Личный Кабинет']")
     private SelenideElement profileButton;
 
     //Кнопка "Войти" в аккаунт
-    @FindBy(how = How.XPATH, using = ".//div[@class='BurgerConstructor_basket__container__2fUl3 mt-10']/button[text()='Войти в аккаунт']")
+    @FindBy(how = How.XPATH, using = ".//button[text()='Войти в аккаунт']")
     private SelenideElement loginButton;
 
     //Локатор надписи "Соберите бургер" для проверки открытия главной страницы
-    @FindBy(how = How.XPATH, using = ".//section[@class='BurgerIngredients_ingredients__1N8v2']/h1[text()='Соберите бургер']")
+    @FindBy(how = How.XPATH, using = ".//h1[text()='Соберите бургер']")
     private SelenideElement assembleABurger;
 
     //Булки в конструкторе активны
-    @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Булки']")
+    @FindBy(how = How.XPATH, using = ".//span[text()='Булки']")
     private SelenideElement bunIsActive;
 
     //Булки в конструкторе неактивны
-    @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Булки']")
+    @FindBy(how = How.XPATH, using = ".//h2[text()='Булки']")
     private SelenideElement bunIsInActive;
 
     //Соусы в конструкторе активны
-    @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Соусы']")
+    @FindBy(how = How.XPATH, using = ".//span[text()='Соусы']")
     private SelenideElement saucesIsActive;
 
     //Соусы в конструкторе неактивны
-    @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Соусы']")
+    @FindBy(how = How.XPATH, using = ".//h2[text()='Соусы']")
     private SelenideElement saucesIsInActive;
 
     //Начинки в конструкторе активны
-    @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Начинки']")
+    @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']")
     private SelenideElement fillingsIsActive;
 
     //Начинки в конструкторе неактивны
-    @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Начинки']")
+    @FindBy(how = How.XPATH, using = ".//h2[text()='Начинки']")
     private SelenideElement fillingsIsInActive;
 
     //Клик по кнопке Личный кабинет

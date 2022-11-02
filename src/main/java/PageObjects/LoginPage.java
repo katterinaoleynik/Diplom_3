@@ -1,4 +1,4 @@
-package POM;
+package PageObjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.How;
 import static java.time.Duration.ofSeconds;
 
 public class LoginPage {
-
+    public static final String loginURL = "https://stellarburgers.nomoreparties.site/account";
     //Кнопка "Зарегистрироваться"
     @FindBy(how = How.LINK_TEXT, using = "Зарегистрироваться")
     private SelenideElement registerLink;

@@ -1,4 +1,4 @@
-package POM;
+package PageObjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.How;
 import static java.time.Duration.ofSeconds;
 
 public class ProfilePage {
-
+    public static final String profilePageURL = "https://stellarburgers.nomoreparties.site/account";
     //Локатор ссылки "Профиль"
     @FindBy(how = How.LINK_TEXT, using = "Профиль")
     private SelenideElement accountLink;

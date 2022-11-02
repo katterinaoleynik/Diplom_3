@@ -1,4 +1,7 @@
-import POM.*;
+import PageObjects.LoginPage;
+import PageObjects.MainPage;
+import PageObjects.ProfilePage;
+import PageObjects.RegistrationPage;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -6,9 +9,11 @@ import org.junit.Test;
 
 import java.util.Objects;
 
+import static PageObjects.MainPage.mainURL;
+import static PageObjects.RegistrationPage.registrationURL;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LogoutFromProfileWithExitButtonTest {
+public class LogoutTest {
 
     private User user;
     private String email;
@@ -22,8 +27,7 @@ public class LogoutFromProfileWithExitButtonTest {
         String name = user.name;
         email = user.email;
         password = user.password;
-        RegistrationPage registrationPage = open("https://stellarburgers.nomoreparties.site/register",
-                RegistrationPage.class);
+        RegistrationPage registrationPage = open(registrationURL, RegistrationPage.class);
         registrationPage.getInputFieldName().setValue(name);
         registrationPage.getInputFieldEmail().setValue(email);
         registrationPage.getInputFieldPassword().setValue(password);
@@ -42,7 +46,7 @@ public class LogoutFromProfileWithExitButtonTest {
     @Test
     @DisplayName("Выход из системы со страницы личного кабинета через нажатие кнопки Выход")
     public void logoutFromProfileByClickExitButton() {
-        MainPage mainPage = open("https://stellarburgers.nomoreparties.site", MainPage.class);
+        MainPage mainPage = open(mainURL, MainPage.class);
         mainPage.clickProfileButton();
         LoginPage loginPage = page(LoginPage.class);
         //Проверка открытия страницы авторизации

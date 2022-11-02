@@ -1,10 +1,13 @@
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class User {
-
-    public final String email;
-    public final String password;
-    public final String name;
+    @Getter
+    @Setter
+    String email;
+    String password;
+    String name;
 
     public User(String email, String password, String name) {
         this.email = email;
@@ -18,4 +21,5 @@ public class User {
         final String name = RandomStringUtils.randomAlphabetic(10);
         return new User(email, password, name);
     }
+
 }

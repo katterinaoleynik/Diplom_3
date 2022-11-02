@@ -1,4 +1,4 @@
-package POM;
+package PageObjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
@@ -10,6 +10,8 @@ import org.openqa.selenium.support.How;
 import static java.time.Duration.ofSeconds;
 
 public class RegistrationPage {
+
+    public static final String registrationURL = "https://stellarburgers.nomoreparties.site/register";
 
     //Локатор надписи "Регистрация" для проверки открытия страницы
     @FindBy(how = How.XPATH, using = ".//div[@class='Auth_login__3hAey']/h2[text()='Регистрация']")
@@ -72,4 +74,5 @@ public class RegistrationPage {
     public void incorrectPasswordNotification() {
         incorrectPasswordError.shouldBe(Condition.visible);
     }
+
 }

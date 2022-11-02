@@ -1,4 +1,7 @@
-import POM.*;
+import PageObjects.LoginPage;
+import PageObjects.MainPage;
+import PageObjects.ProfilePage;
+import PageObjects.RegistrationPage;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -6,9 +9,12 @@ import org.junit.Test;
 
 import java.util.Objects;
 
+import static PageObjects.MainPage.mainURL;
+import static PageObjects.ProfilePage.profilePageURL;
+import static PageObjects.RegistrationPage.registrationURL;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginFromMainPageSecondTest {
+public class GoingToProfilePageTest {
     private User user;
     private String email;
     private String password;
@@ -21,8 +27,7 @@ public class LoginFromMainPageSecondTest {
         String name = user.name;
         email = user.email;
         password = user.password;
-        RegistrationPage registrationPage = open("https://stellarburgers.nomoreparties.site/register",
-                RegistrationPage.class);
+        RegistrationPage registrationPage = open(registrationURL, RegistrationPage.class);
         registrationPage.getInputFieldName().setValue(name);
         registrationPage.getInputFieldEmail().setValue(email);
         registrationPage.getInputFieldPassword().setValue(password);
@@ -33,23 +38,23 @@ public class LoginFromMainPageSecondTest {
 
     @After
     public void tearDown() {
-        ProfilePage profilePage = open("https://stellarburgers.nomoreparties.site/account",
-                ProfilePage.class);
+        ProfilePage profilePage = open(profilePageURL, ProfilePage.class);
         profilePage.clickExitButton();
         LoginPage logPage = page(LoginPage.class);
         logPage.waitForLoadLoginPage();
+        //Удаление созданного пользователя
         userClient = new UserClient();
         userClient.deleteAccessToken(accessToken);
         System.out.println("Конец теста");
     }
 
     @Test
-    @DisplayName("Авторизация пользователя с главной страницы через нажатие кнопки Войти в аккаунт")
-    public void authorizationFromMainPageByClickLoginButton() {
-        MainPage mainPage = open("https://stellarburgers.nomoreparties.site", MainPage.class);
-        mainPage.clickLogin();
+    @DisplayName("Переход в личный кабинет с главной страницы с авторизацией")
+    public void goingToProfileFromMainPageByClickProfileButton() {
+        MainPage mainPage = open(mainURL, MainPage.class);
+        mainPage.clickProfileButton();
         LoginPage loginPage = page(LoginPage.class);
-        //Проверка открытия страница авторизации
+        //проверка что открылась страница авторизации ВХОД
         loginPage.waitForLoadLoginPage();
         loginPage.getInputFieldEmail().setValue(email);
         loginPage.getInputFieldPassword().setValue(password);
@@ -58,6 +63,9 @@ public class LoginFromMainPageSecondTest {
         mainPage.waitForLoadMainPage();
         //Получение токена
         accessToken = Objects.requireNonNull(localStorage().getItem("accessToken")).substring(7);
-        System.out.println("Токен для удаления созданного пользователя  " + accessToken);
+        System.out.println("Токен для удаления созданного пользователя " + accessToken);
+        mainPage.clickProfileButton();
+        ProfilePage profilePage = page(ProfilePage.class);
+        profilePage.waitForLoadProfilePage();
     }
 }
